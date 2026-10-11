@@ -103,12 +103,11 @@
                 
                 var btn = document.getElementById('main-btn');
                 btn.innerHTML = 'Acknowledge & Continue Browsing';
-                btn.href = "#";
+                // Update the link to trigger the MikroTik bypass rule
+                btn.href = "http://neverssl.com/acknowledge";
+                btn.removeAttribute('target'); // Remove _blank so it loads in the same window
                 btn.style.backgroundColor = "#3B82F6"; // Blue
-                btn.onclick = function(e) {
-                    e.preventDefault();
-                    window.location.reload(); // Reloads page, triggering router bypass
-                };
+                btn.onclick = null; // Let the browser naturally navigate to the link
             };
             img.src = "https://www.google.com/favicon.ico?" + new Date().getTime();
         };
