@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's get you back online!</title>
+    <style>
+        :root {
+            --bg-main: #FDFBF7; --card-bg: #FFFFFF;
+            --accent: #F97316; --accent-light: #FFF0E6;
+            --text-main: #334155; --text-muted: #64748B;
+            --btn-bg: #10B981; --btn-hover: #059669;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-main);
+            background-image: radial-gradient(circle at top right, var(--accent-light) 0%, var(--bg-main) 40%);
+            color: var(--text-main); font-family: system-ui, -apple-system, sans-serif;
+            display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg); border-radius: 2.5rem; padding: 2.5rem; width: 100%; max-width: 450px;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border: 1px solid var(--accent-light); position: relative; overflow: hidden;
+        }
+        .header { text-align: center; margin-bottom: 2rem; position: relative; z-index: 10; }
+        .badge {
+            display: inline-block; background-color: var(--accent-light); color: var(--accent);
+            padding: 0.375rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; border: 1px solid #ffedd5; transition: all 0.3s;
+        }
+        h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-muted); font-size: 0.875rem; font-weight: 500; }
+        .steps { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2.5rem; position: relative; z-index: 10; }
+        .step { display: flex; align-items: flex-start; gap: 1.25rem; }
+        .step-number { width: 3rem; height: 3rem; border-radius: 1rem; background-color: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 1.25rem; }
+        .step-text { padding-top: 0.25rem; }
+        .step-text h2 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .step-text p { color: var(--text-muted); font-size: 0.875rem; font-weight: 500; line-height: 1.6; }
+        .highlight-wrapper { display: inline-flex; align-items: center; gap: 0.75rem; background-color: rgba(255, 240, 230, 0.5); padding: 0.375rem 0.5rem 0.375rem 0.75rem; border-radius: 1rem; margin-left: -0.75rem; margin-top: 0.25rem; margin-bottom: 0.5rem; }
+        .highlight { color: var(--accent); font-weight: 800; font-size: 1.875rem; letter-spacing: 0.1em; }
+        .copy-btn { background-color: white; border: 1px solid #ffedd5; color: var(--accent); padding: 0.5rem 0.75rem; border-radius: 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.25rem; }
+        .copy-btn svg { width: 1.25rem; height: 1.25rem; }
+        .btn-main { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; background-color: var(--btn-bg); color: white; font-weight: 800; font-size: 1.125rem; padding: 1rem; border-radius: 1rem; text-decoration: none; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); transition: all 0.3s; margin-bottom: 1.5rem; position: relative; z-index: 10; }
+        .btn-secondary { display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--bg-main); border-radius: 1.5rem; padding: 1.5rem; text-decoration: none; border: 1px solid #FFF0E6; position: relative; z-index: 10; }
+        .help-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .help-header p { color: var(--text-muted); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; }
+        .phone-number { color: var(--text-main); font-weight: 800; font-size: 1.25rem; letter-spacing: 0.025em; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="badge" id="status-badge">Let's get you back online!</div>
+            <h1 id="status-title">How to Pay</h1>
+            <p class="subtitle" id="status-subtitle">Follow these simple steps to reconnect.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number" id="step1-color">1</div>
+                <div class="step-text"><h2>M-PESA Paybill</h2><p>Go to Lipa na M-PESA &gt; Paybill</p></div>
+            </div>
+            <div class="step">
+                <div class="step-number" id="step2-color">2</div>
+                <div class="step-text"><h2>Enter Paybill Number</h2>
+                    <div class="highlight-wrapper" id="hw1"><span class="highlight" id="h1-color">522533</span>
+                        <button class="copy-btn" id="cb1" onclick="copyText('522533', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number" id="step3-color">3</div>
+                <div class="step-text"><h2>Enter Account Number</h2>
+                    <div class="highlight-wrapper" id="hw2"><span class="highlight" id="h2-color">7836730</span>
+                        <button class="copy-btn" id="cb2" onclick="copyText('7836730', this)">Copy</button>
+                    </div>
+                    <p>Or your unique Client Account Number</p>
+                </div>
+            </div>
+        </div>
+        <a href="https://wa.me/254746124199?text=Hello,%20I%20have%20paid.%20Please%20check%20and%20reconnect%20my%20internet." id="main-btn" target="_blank" class="btn-main">I've Paid - Reconnect</a>
+        <div class="btn-secondary">
+            <div class="help-header"><p>Need Help? WhatsApp us</p></div>
+            <div class="highlight-wrapper" style="margin: 0.5rem 0 0 0; background: transparent;"><span class="phone-number">+254 746 124 199</span>
+                <button class="copy-btn" onclick="copyText('+254746124199', this)">Copy</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function copyText(text, btnElement) {
+            const orig = btnElement.innerHTML;
+            navigator.clipboard.writeText(text).then(() => {
+                btnElement.innerHTML = 'Copied!'; setTimeout(() => { btnElement.innerHTML = orig; }, 2000);
+            });
+        }
+        window.onload = function() {
+            var img = new Image();
+            img.onload = function() {
+                // Internet is active! Morph to Soft Warning Mode
+                document.title = "Friendly Reminder";
+                document.getElementById('status-badge').innerText = "Upcoming Due Date";
+                document.getElementById('status-badge').style.cssText = "background-color: #DBEAFE; color: #2563EB; border-color: #BFDBFE;";
+                document.getElementById('status-title').innerText = "Bill Due Soon";
+                document.getElementById('status-subtitle').innerText = "This is a friendly reminder to settle your upcoming internet bill to avoid service interruption.";
+                
+                var btn = document.getElementById('main-btn');
+                btn.innerHTML = 'Acknowledge & Continue Browsing';
+                btn.href = "#";
+                btn.style.backgroundColor = "#3B82F6"; // Blue
+                btn.onclick = function(e) {
+                    e.preventDefault();
+                    window.location.reload(); // Reloads page, triggering router bypass
+                };
+            };
+            img.src = "https://www.google.com/favicon.ico?" + new Date().getTime();
+        };
+    </script>
+</body>
+</html>
